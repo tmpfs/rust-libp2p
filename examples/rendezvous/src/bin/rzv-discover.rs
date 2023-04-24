@@ -37,7 +37,7 @@ async fn main() {
 
     let key_pair = identity::Keypair::generate_ed25519();
     let rendezvous_point_address = "/ip4/127.0.0.1/tcp/62649".parse::<Multiaddr>().unwrap();
-    let rendezvous_point = "12D3KooWDpJ7As7BWAwRMfu1VU2WCqNjvq387JEYKDBj4kx6nXTN"
+    let rendezvous_point = "12D3KooWKVXxcjAhko4um1kDRu9ENGXUMUo3r87dm7kq8r5dC8x5"
         .parse()
         .unwrap();
 
@@ -87,6 +87,7 @@ async fn main() {
                         cookie.replace(new_cookie);
 
                         for registration in registrations {
+                            println!("{:#?}", registration);
                             for address in registration.record.addresses() {
                                 let peer = registration.record.peer_id();
                                 log::info!("Discovered peer {} at {}", peer, address);
@@ -107,7 +108,7 @@ async fn main() {
                         peer,
                         result: Ok(ping::Success::Ping { rtt }),
                     })) if peer != rendezvous_point => {
-                        log::info!("Ping to {} is {}ms", peer, rtt.as_millis())
+                        //log::info!("Ping to {} is {}ms", peer, rtt.as_millis())
                     }
                     other => {
                         log::debug!("Unhandled {:?}", other);

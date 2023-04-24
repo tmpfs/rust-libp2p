@@ -33,7 +33,7 @@ async fn main() {
 
     let key_pair = identity::Keypair::generate_ed25519();
     let rendezvous_point_address = "/ip4/127.0.0.1/tcp/62649".parse::<Multiaddr>().unwrap();
-    let rendezvous_point = "12D3KooWDpJ7As7BWAwRMfu1VU2WCqNjvq387JEYKDBj4kx6nXTN"
+    let rendezvous_point = "12D3KooWKVXxcjAhko4um1kDRu9ENGXUMUo3r87dm7kq8r5dC8x5"
         .parse()
         .unwrap();
 

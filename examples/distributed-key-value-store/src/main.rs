@@ -116,7 +116,11 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 println!("Listening in {address:?}");
             },
             SwarmEvent::Behaviour(MyBehaviourEvent::Mdns(mdns::Event::Discovered(list))) => {
+
+                println!("GOT MDNS EVENT");
+
                 for (peer_id, multiaddr) in list {
+                    println!("{} {}", peer_id, multiaddr);
                     swarm.behaviour_mut().kademlia.add_address(&peer_id, multiaddr);
                 }
             }
